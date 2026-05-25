@@ -288,9 +288,15 @@ function openItemModal(cat, idx){
   currentModalItem = {cat, idx, item};
 
   const isOnlyLarge = item.onlyLarge === true;
+
+  // Menu yang default-nya No Sugar (bisa diganti user)
+  // Cocokkan persis nama "Americano", "Latte", "Cappuccino" (bukan "Spanish Latte" / "Vanilla Latte" / dll)
+  const noSugarDefault = ['Americano', 'Cappuccino', 'Latte'];
+  const defaultSugar = noSugarDefault.includes(item.name) ? 'No Sugar' : 'Normal Sugar';
+
   modalState = {
     size: isOnlyLarge ? 'large' : 'regular',
-    sugar: 'Normal Sugar',
+    sugar: defaultSugar,
     ice: 'Normal Ice',
     qty: 1
   };
@@ -433,8 +439,8 @@ function buildModalContent(){
     <div class="modal-body">
       <div class="modal-title">${item.name}</div>
       <div class="modal-price-row">
-        <span class="modal-price-old">${fmt(item.normal)}</span>
-        <span class="modal-price-new">${fmt(item.disc)}</span>
+        <span class="modal-price-old" id="modalPriceOld">${fmt(item.normal)}</span>
+        <span class="modal-price-new" id="modalPriceNew">${fmt(computeModalPrice())}</span>
       </div>
       ${sizeSection}
       ${sugarSection}
