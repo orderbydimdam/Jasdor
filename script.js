@@ -929,6 +929,18 @@ function filterCategory(cat, btn){
   document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
   btn.classList.add("active");
   applyFilters();
+
+  // Auto-center tab yang ditap ke tengah scroll bar (mirip behavior aplikasi mobile)
+  const tabsBar = document.getElementById("tabsBar");
+  if(tabsBar && btn){
+    const tabRect = btn.getBoundingClientRect();
+    const barRect = tabsBar.getBoundingClientRect();
+    // Posisi tengah tab relatif terhadap scroll-container, dikurangi setengah lebar bar
+    const targetScroll = tabsBar.scrollLeft + (tabRect.left - barRect.left)
+                         - (barRect.width / 2) + (tabRect.width / 2);
+    tabsBar.scrollTo({ left: targetScroll, behavior: 'smooth' });
+  }
+
   if(cat!=='all'){
     setTimeout(()=>{
       const targetId = (cat === 'new') ? 'new-menu' : cat;
