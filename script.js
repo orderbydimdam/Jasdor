@@ -37,7 +37,6 @@ const MENUS = {
     // ── BEST SELLER (signature) ──
     {name:"Milo Dinosaurus",normal:23000,disc:15000,upsize:19000,emo:"🥛",img:"Milo Dinosaurus.png",signature:true},
     {name:"Raspberry Hibiscus",normal:20000,disc:14000,upsize:18000,emo:"🌺",img:"Raspberry Hibiscus.png",signature:true},
-    {name:"Thai Tea",normal:22000,disc:15000,upsize:null,emo:"🧋",img:"Thai Tea.png",onlyLarge:true,signature:true},
     {name:"Matcha Latte",normal:25000,disc:16000,upsize:20000,emo:"🍵",img:"Matcha Latte.png",signature:true},
     {name:"Babyccino",normal:19000,disc:13000,upsize:null,emo:"🥛",img:"Babyccino.png",signature:true},
     // ── REGULAR ──
