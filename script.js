@@ -6,12 +6,12 @@ const MENUS = {
   coffee: [
     // ── BEST SELLER (signature) ──
     {name:"Kopi Kenangan Mantan",normal:19000,disc:13000,upsize:17000,emo:"☕",img:"Kopi Kenangan Mantan.png",signature:true},
-    {name:"Creamy Aren Latte",normal:22000,disc:15000,upsize:19000,emo:"☕",img:"Creamy Aren Latte.png",signature:true},
+    {name:"Creamy Aren Latte",normal:22000,disc:15000,upsize:20000,emo:"☕",img:"Creamy Aren Latte.png",signature:true},
     {name:"Americano",normal:17000,disc:12000,upsize:16000,emo:"☕",img:"Americano.png",signature:true},
-    {name:"Spanish Latte",normal:19000,disc:13000,upsize:17000,emo:"☕",img:"Spanish Latte.png",signature:true},
-    {name:"Caramel Macchiato",normal:28000,disc:18000,upsize:22000,emo:"☕",img:"Caramel Macchiato.png",signature:true},
+    {name:"Spanish Latte",normal:19000,disc:13000,upsize:17500,emo:"☕",img:"Spanish Latte.png",signature:true},
+    {name:"Caramel Macchiato",normal:28000,disc:18000,upsize:24000,emo:"☕",img:"Caramel Macchiato.png",signature:true},
     // ── REGULAR ──
-    {name:"OG Aren Speculoos Latte",normal:21000,disc:14000,upsize:18000,emo:"☕",img:"OG Aren Speculoos Latte.png"},
+    {name:"OG Aren Speculoos Latte",normal:21000,disc:14000,upsize:19000,emo:"☕",img:"OG Aren Speculoos Latte.png"},
     {name:"Dua Shot OG Aren",normal:25000,disc:16000,upsize:20000,emo:"☕",img:"Dua  Shot  OG  Aren.png"},
     {name:"Mocha Caramel",normal:26000,disc:17000,upsize:21000,emo:"☕",img:"Mocha Caramel.png"},
     {name:"Toffee Nut Latte",normal:19000,disc:13000,upsize:17000,emo:"☕",img:"Toffee Nut Latte.png"},
@@ -19,16 +19,16 @@ const MENUS = {
     {name:"Toffee Nut Oat Latte",normal:22000,disc:15000,upsize:19000,emo:"☕",img:"Toffee Nut Oat Latte.png"},
     {name:"Pistachio Aren Latte",normal:19000,disc:13000,upsize:17000,emo:"☕",img:"Pistachio Aren Latte.png"},
     {name:"Cafe Malt Latte",normal:23000,disc:15000,upsize:19000,emo:"☕",img:"Cafe Malt Latte.png"},
-    {name:"Caramel Latte",normal:26000,disc:17000,upsize:21000,emo:"☕",img:"Caramel Latte.png"},
-    {name:"Dua Shot Iced Shaken",normal:28000,disc:18000,upsize:22000,emo:"☕",img:"Dua Shot Iced Shaken.png"},
-    {name:"Hazelnut Latte",normal:26000,disc:17000,upsize:21000,emo:"☕",img:"Hazelnut Latte.png"},
-    {name:"Kopi Susu Black Aren",normal:21000,disc:14000,upsize:18000,emo:"☕",img:"Kopi Susu Black Aren.png"},
+    {name:"Caramel Latte",normal:26000,disc:17000,upsize:21500,emo:"☕",img:"Caramel Latte.png"},
+    {name:"Dua Shot Iced Shaken",normal:28000,disc:18000,upsize:24000,emo:"☕",img:"Dua Shot Iced Shaken.png"},
+    {name:"Hazelnut Latte",normal:26000,disc:17000,upsize:21500,emo:"☕",img:"Hazelnut Latte.png"},
+    {name:"Kopi Susu Black Aren",normal:21000,disc:14000,upsize:19000,emo:"☕",img:"Kopi Susu Black Aren.png"},
     {name:"Matcha Espresso",normal:26000,disc:17000,upsize:21000,emo:"🍵",img:"Matcha Espresso.png"},
     {name:"Mocha Latte",normal:28000,disc:18000,upsize:22000,emo:"☕",img:"Mocha Latte.png"},
     {name:"Vanilla Latte",normal:26000,disc:17000,upsize:21000,emo:"☕",img:"Vanilla Latte.png"},
-    {name:"Avocado Coffee",normal:28000,disc:18000,upsize:22000,emo:"🥑",img:"Avocado Coffee.png"},
+    {name:"Avocado Coffee",normal:28000,disc:18000,upsize:24000,emo:"🥑",img:"Avocado Coffee.png"},
     {name:"Butterscotch Aren Latte",normal:20000,disc:14000,upsize:18000,emo:"☕",img:"Butterscotch Aren Latte.png"},
-    {name:"Butterscotch Sea Salt",normal:25000,disc:16000,upsize:20000,emo:"☕",img:"Butterscotch Sea Salt.png"},
+    {name:"Butterscotch Sea Salt",normal:25000,disc:16000,upsize:20500,emo:"☕",img:"Butterscotch Sea Salt.png"},
     {name:"Cappuccino",normal:22000,disc:15000,upsize:19000,emo:"☕",img:"Cappuccino.png"},
     {name:"Latte",normal:22000,disc:15000,upsize:19000,emo:"☕",img:"Latte.png"},
     {name:"Thai Tea Coffee",normal:25000,disc:16000,upsize:null,emo:"🧋",img:"Thai Tea Coffee.png",onlyLarge:true,isNew:true},
@@ -48,29 +48,29 @@ const MENUS = {
     {name:"Milk Oreo Crumble",normal:26000,disc:17000,upsize:null,emo:"🍪",img:"Milk Oreo Crumble.png"},
     {name:"Fresh Lemonade",normal:17000,disc:12000,upsize:null,emo:"🍋",img:"Fresh Lemonade.png",onlyLarge:true},
     {name:"Hazelnut Choco Milk Tea",normal:22000,disc:15000,upsize:19000,emo:"🧋",img:"Hazelnut Choco Milk Tea.png"},
-    {name:"Avocado Caramel",normal:28000,disc:18000,upsize:22000,emo:"🥑",img:"Avocado Caramel.png"},
-    {name:"Avocado Milk",normal:24000,disc:16000,upsize:20000,emo:"🥑",img:"Avocado Milk.png"},
-    {name:"Caramel Dutch Choco",normal:28000,disc:18000,upsize:22000,emo:"🍫",img:"Caramel Dutch Choco.png"},
-    {name:"Dutch Chocolate",normal:26000,disc:17000,upsize:21000,emo:"🍫",img:"Dutch Chocolate.png"},
-    {name:"Hazelnut Dutch Choco",normal:28000,disc:18000,upsize:22000,emo:"🍫",img:"Hazelnut Dutch Choco.png"},
+    {name:"Avocado Caramel",normal:28000,disc:18000,upsize:24000,emo:"🥑",img:"Avocado Caramel.png"},
+    {name:"Avocado Milk",normal:24000,disc:16000,upsize:22000,emo:"🥑",img:"Avocado Milk.png"},
+    {name:"Caramel Dutch Choco",normal:28000,disc:18000,upsize:24000,emo:"🍫",img:"Caramel Dutch Choco.png"},
+    {name:"Dutch Chocolate",normal:26000,disc:17000,upsize:23000,emo:"🍫",img:"Dutch Chocolate.png"},
+    {name:"Hazelnut Dutch Choco",normal:28000,disc:18000,upsize:24000,emo:"🍫",img:"Hazelnut Dutch Choco.png"},
     {name:"Lemon Black Tea",normal:17000,disc:12000,upsize:16000,emo:"🍋",img:"Lemon Black Tea.png"},
     {name:"Kenangan Milk Tea",normal:21000,disc:14000,upsize:18000,emo:"🧋",img:"Kenangan Milk Tea.png"},
-    {name:"Oreo Shake",normal:26000,disc:17000,upsize:21000,emo:"🍪",img:"Oreo Shake.png"},
+    {name:"Oreo Shake",normal:26000,disc:17000,upsize:21500,emo:"🍪",img:"Oreo Shake.png"},
     {name:"Susu Grass Jelly",normal:24000,disc:16000,upsize:20000,emo:"🥛",img:"Susu Grass Jelly.png"},
     {name:"Og Thai Tea",normal:19000,disc:13000,upsize:17000,emo:"🧋",img:"Og Thai Tea.png",isNew:true},
     {name:"Thai Tea Loaded",normal:27000,disc:18000,upsize:null,emo:"🧋",img:"Thai Tea Loaded.png",onlyLarge:true,isNew:true},
     {name:"Thai Tea Aren",normal:24000,disc:16000,upsize:null,emo:"🧋",img:"Thai Tea Aren.png",onlyLarge:true,isNew:true},
   ],
   oatside: [
-    {name:"Oatside Kopi Kenangan",normal:22000,disc:15000,upsize:19000,emo:"🥛",img:"Oatside Kopi Kenangan.png"},
-    {name:"Oatside Latte",normal:25000,disc:16000,upsize:20000,emo:"🥛",img:"Oatside Latte.png"},
+    {name:"Oatside Kopi Kenangan",normal:22000,disc:15000,upsize:19500,emo:"🥛",img:"Oatside Kopi Kenangan.png"},
+    {name:"Oatside Latte",normal:25000,disc:16000,upsize:23000,emo:"🥛",img:"Oatside Latte.png"},
     {name:"Oatsdie Matcha Latte",normal:25000,disc:16000,upsize:20000,emo:"🍵",img:"Oatsdie Matcha Latte.png"},
   ],
   frappe: [
     {name:"Choco Caramel Frappe",normal:28000,disc:18000,upsize:23000,emo:"🧊",img:"Choco Caramel Frappe.png"},
     {name:"Tiramisu Frappe",normal:28000,disc:18000,upsize:23000,emo:"🧊",img:"Tiramisu Frappe.png",signature:true},
-    {name:"Butterscotch Kenangan Frappe",normal:30000,disc:19000,upsize:24000,emo:"🧊",img:"Butterscotch Kenangan Frappe.png"},
-    {name:"Matcha Kenangan Frappe",normal:32000,disc:21000,upsize:26000,emo:"🧊",img:"Matcha Kenangan Frappe.png"},
+    {name:"Butterscotch Kenangan Frappe",normal:30000,disc:19000,upsize:25000,emo:"🧊",img:"Butterscotch Kenangan Frappe.png"},
+    {name:"Matcha Kenangan Frappe",normal:32000,disc:21000,upsize:27000,emo:"🧊",img:"Matcha Kenangan Frappe.png"},
     {name:"Kopi Kenangan Mantan Frappe",normal:27000,disc:18000,upsize:23000,emo:"🧊",img:"Kopi Kenangan Mantan Frappe.png",signature:true},
     {name:"Vanilla Kenangan Frappe",normal:25000,disc:16000,upsize:21000,emo:"🧊",img:"Vanilla Kenangan Frappe.png"},
     {name:"Dutch Choco Kenangan Frappe",normal:29000,disc:19000,upsize:24000,emo:"🧊",img:"Dutch Choco Kenangan Frappe.png"},
@@ -257,7 +257,7 @@ function buildMenuCard(cat, item, idx, isClone){
 
   let sizeBadge = '';
   if(isDrink){
-    if(hasUpsize) sizeBadge = `<span class="size-badge">📏 Reg / Upsize</span>`;
+    if(hasUpsize) sizeBadge = `<span class="size-badge">📏 Reg / Large</span>`;
     else if(isOnlyLarge) sizeBadge = `<span class="size-badge size-badge-large">📏 Large Only</span>`;
     else sizeBadge = `<span class="size-badge">📏 Regular</span>`;
   }
@@ -372,7 +372,7 @@ function buildModalContent(){
               <div class="opt-sub">${fmt(item.disc)}</div>
             </button>
             <button class="modal-opt ${modalState.size==='upsize'?'active':''}" onclick="setModalSize('upsize')">
-              <div class="opt-main">Upsize</div>
+              <div class="opt-main">Large</div>
               <div class="opt-sub">${fmt(item.upsize)}</div>
             </button>
           </div>
@@ -504,7 +504,7 @@ function addToCartFromModal(ev){
   const cartId = `${cat}-${idx}-${Date.now()}`;
   const isUpsize = modalState.size === 'upsize';
   const isLarge = modalState.size === 'large';
-  const sizeLabel = isUpsize ? 'Upsize' : (isLarge ? 'Large' : 'Regular');
+  const sizeLabel = isUpsize ? 'Large' : (isLarge ? 'Large' : 'Regular');
   const price = isUpsize && item.upsize ? item.upsize : item.disc;
 
   cart.push({
@@ -1061,7 +1061,7 @@ function applyFilters(){
       toast: 'Toast', food: 'Food'
     };
     const filterLabel = {
-      upsize: 'Bisa Upsize', under15: '≤ Rp15K', signature: 'Signature'
+      upsize: 'Bisa Large', under15: '≤ Rp15K', signature: 'Signature'
     };
 
     if(searchQuery){
