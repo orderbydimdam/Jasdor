@@ -296,11 +296,23 @@ function openItemModal(cat, idx){
   const noSugarDefault = ['Americano', 'Cappuccino', 'Latte'];
   const defaultSugar = noSugarDefault.includes(item.name) ? 'No Sugar' : 'Normal Sugar';
 
+  // Default whipped cream per menu frappe (tetap bisa diganti user)
+  const whippedDefaults = {
+    'Choco Caramel Frappe': 'Whipped Cream Chocolate',
+    'Dutch Choco Kenangan Frappe': 'Whipped Cream Chocolate',
+    'Tiramisu Frappe': 'Whipped Cream Chocolate',
+    'Butterscotch Kenangan Frappe': 'Whipped Cream Vanilla',
+    'Matcha Kenangan Frappe': 'Whipped Cream Vanilla',
+    'Kopi Kenangan Mantan Frappe': 'Whipped Cream Vanilla',
+    'Vanilla Kenangan Frappe': 'Whipped Cream Vanilla'
+  };
+  const defaultWhipped = whippedDefaults[item.name] || 'No Whipped Cream';
+
   modalState = {
     size: isOnlyLarge ? 'large' : 'regular',
     sugar: defaultSugar,
     ice: 'Normal Ice',
-    whipped: 'No Whipped Cream',
+    whipped: defaultWhipped,
     qty: 1
   };
 
