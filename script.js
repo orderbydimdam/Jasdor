@@ -119,8 +119,11 @@ const MENUS = {
 
 // Categories that should NOT show sugar/ice (food items)
 const NO_SUGAR_ICE = ['bake','toast','food'];
-// Frappe = no ice option (always icy)
-const NO_ICE_OPTION = ['frappe'];
+// Frappe: punya ice tapi tanpa opsi "No Ice" (cuma Normal/Less) + punya whipped cream
+const ICE_NO_ZERO = ['frappe'];
+// Frappe punya pilihan whipped cream (Vanilla / Chocolate / No Whipped)
+const HAS_WHIPPED = ['frappe'];
+const NO_ICE_OPTION = [];  // (kosong) — frappe sekarang tetap tampil ice via ICE_NO_ZERO
 
 // ── STATE ──
 let cart = []; // [{id, name, size, price, qty, sugar, ice}]
@@ -205,7 +208,7 @@ function closeWelcomeAndSwitch(brand){
 
 // ─────────── RENDER MENU ───────────
 let currentModalItem = null;
-let modalState = {size:'regular', sugar:'Normal Sugar', ice:'Normal Ice', qty:1};
+let modalState = {size:'regular', sugar:'Normal Sugar', ice:'Normal Ice', whipped:'No Whipped Cream', qty:1};
 
 function renderMenus(){
   Object.keys(MENUS).forEach(cat=>{
@@ -297,6 +300,7 @@ function openItemModal(cat, idx){
     size: isOnlyLarge ? 'large' : 'regular',
     sugar: defaultSugar,
     ice: 'Normal Ice',
+    whipped: 'No Whipped Cream',
     qty: 1
   };
 
@@ -414,13 +418,39 @@ function buildModalContent(){
 
   let iceSection = '';
   if(isDrink && !noIce){
+    // Frappe: cuma Normal & Less (tanpa No Ice). Lainnya: Normal/Less/No
+    const iceOpts = ICE_NO_ZERO.includes(cat)
+      ? ['Normal Ice','Less Ice']
+      : ['Normal Ice','Less Ice','No Ice'];
+    const iceColClass = iceOpts.length === 2 ? 'modal-options-2' : 'modal-options-3';
     iceSection = `
       <div class="modal-section" data-section="ice">
         <div class="modal-label">🧊 Ice Level</div>
-        <div class="modal-options modal-options-3">
-          ${['Normal Ice','Less Ice','No Ice'].map(v=>`
+        <div class="modal-options ${iceColClass}">
+          ${iceOpts.map(v=>`
             <button class="modal-opt ${modalState.ice===v?'active':''}" onclick="setModalIce('${v}')">
               <div class="opt-main">${v.replace(' Ice','')}</div>
+            </button>
+          `).join('')}
+        </div>
+      </div>`;
+  }
+
+  // Whipped Cream section (khusus frappe)
+  let whippedSection = '';
+  if(HAS_WHIPPED.includes(cat)){
+    const whippedOpts = [
+      {val:'Whipped Cream Vanilla', label:'Vanilla', emo:'🍦'},
+      {val:'Whipped Cream Chocolate', label:'Chocolate', emo:'🍫'},
+      {val:'No Whipped Cream', label:'Tanpa', emo:'🚫'}
+    ];
+    whippedSection = `
+      <div class="modal-section" data-section="whipped">
+        <div class="modal-label">🍦 Whipped Cream</div>
+        <div class="modal-options modal-options-3">
+          ${whippedOpts.map(o=>`
+            <button class="modal-opt ${modalState.whipped===o.val?'active':''}" onclick="setModalWhipped('${o.val}')">
+              <div class="opt-main">${o.emo} ${o.label}</div>
             </button>
           `).join('')}
         </div>
@@ -444,6 +474,7 @@ function buildModalContent(){
       ${sizeSection}
       ${sugarSection}
       ${iceSection}
+      ${whippedSection}
       <div class="modal-section">
         <div class="modal-label">Jumlah</div>
         <div class="modal-qty-row">
@@ -496,6 +527,20 @@ function setModalIce(val){
     b.classList.toggle('active', b.textContent.trim() === val.replace(' Ice',''));
   });
 }
+function setModalWhipped(val){
+  modalState.whipped = val;
+  const sec = document.querySelector('#itemModalContent [data-section="whipped"]');
+  if(!sec) return;
+  // Map value ke label yang tampil di tombol
+  const labelMap = {
+    'Whipped Cream Vanilla':'🍦 Vanilla',
+    'Whipped Cream Chocolate':'🍫 Chocolate',
+    'No Whipped Cream':'🚫 Tanpa'
+  };
+  sec.querySelectorAll('.modal-opt').forEach(b=>{
+    b.classList.toggle('active', b.textContent.trim() === labelMap[val]);
+  });
+}
 function setModalQty(delta){
   modalState.qty = Math.max(1, modalState.qty + delta);
   updateModalTotal();
@@ -521,6 +566,7 @@ function addToCartFromModal(ev){
     qty: modalState.qty,
     sugar: isDrink ? modalState.sugar : null,
     ice: (isDrink && !NO_ICE_OPTION.includes(cat)) ? modalState.ice : null,
+    whipped: HAS_WHIPPED.includes(cat) ? modalState.whipped : null,
     emo: item.emo
   });
   saveCart();
@@ -649,6 +695,9 @@ function renderCart(){
     if(ci.size) metaParts.push(ci.size);
     if(ci.sugar) metaParts.push(ci.sugar);
     if(ci.ice) metaParts.push(ci.ice);
+    if(ci.whipped && ci.whipped !== 'No Whipped Cream'){
+      metaParts.push(ci.whipped.replace('Whipped Cream ','WC '));
+    }
     const metaStr = metaParts.length
       ? metaParts.map((m,i)=>i===0?m:`<span class="pipe">·</span>${m}`).join('')
       : '';
@@ -812,6 +861,7 @@ function buildPreview(){
     let detail=ci.size ? `${ci.size} × ${ci.qty}` : `× ${ci.qty}`;
     if(ci.sugar) detail+=` · ${ci.sugar}`;
     if(ci.ice) detail+=` · ${ci.ice}`;
+    if(ci.whipped && ci.whipped !== 'No Whipped Cream') detail+=` · ${ci.whipped}`;
     html+=`<div class="pv-item">
       <div class="pv-item-name">${i+1}. ${ci.name}</div>
       <div class="pv-item-detail">${detail}</div>
@@ -847,6 +897,7 @@ function confirmSendToWA(){
     msg+=`   ${sizeStr} = ${fmt(ci.price*ci.qty)}\n`;
     if(ci.sugar) msg+=`   Sugar: ${ci.sugar}\n`;
     if(ci.ice) msg+=`   Ice: ${ci.ice}\n`;
+    if(ci.whipped && ci.whipped !== 'No Whipped Cream') msg+=`   Whipped: ${ci.whipped.replace('Whipped Cream ','')}\n`;
     total+=ci.price*ci.qty;
   });
   msg+="──────────────────────\n";
@@ -916,7 +967,7 @@ function fireConfetti(){
 
 // ─────────── TOAST ───────────
 function showToast(msg){
-  const t=document.getElementById("toast");
+  const t=document.getElementById("toastNotif");
   t.textContent=msg;t.classList.add("show");
   clearTimeout(t._tid);
   t._tid=setTimeout(()=>t.classList.remove("show"),2400);

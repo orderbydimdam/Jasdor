@@ -635,6 +635,7 @@ header{
 }
 .modal-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .modal-options-3{grid-template-columns:repeat(3,1fr)}
+.modal-options-2{grid-template-columns:repeat(2,1fr)}
 .modal-opt{
   background:var(--card);
   border:1.5px solid var(--border);
