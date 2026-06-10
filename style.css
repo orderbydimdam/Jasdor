@@ -3446,3 +3446,114 @@ body.light-mode .fav-sheet{
   transition:transform .15s;
 }
 .fav-empty-cta:active{ transform:scale(.95); }
+
+/* ─────────── PROMO BANNER ─────────── */
+.promo-banner{
+  display:flex;align-items:center;gap:8px;
+  margin:0 16px 12px;
+  padding:10px 14px;
+  background:linear-gradient(135deg,#7B3F00,#A0522D);
+  border:1px solid var(--caramel);
+  border-radius:12px;
+  cursor:pointer;
+  transition:transform .15s,box-shadow .15s;
+  animation:promoPulse 2.5s ease-in-out infinite;
+}
+.promo-banner:active{transform:scale(.98);}
+.promo-banner-icon{font-size:18px;flex-shrink:0;}
+.promo-banner-text{flex:1;font-size:13px;color:var(--cream);line-height:1.4;}
+.promo-banner-text b{color:var(--caramel-light);}
+.promo-banner-arrow{font-size:20px;color:var(--caramel-light);font-weight:700;flex-shrink:0;}
+@keyframes promoPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(205,133,63,.4);}
+  50%{box-shadow:0 0 0 6px rgba(205,133,63,0);}
+}
+
+/* ─────────── PROMO POPUP ─────────── */
+.promo-popup-overlay{
+  display:none;position:fixed;inset:0;z-index:600;
+  background:rgba(0,0,0,.75);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;
+}
+.promo-popup-overlay.open{display:flex;}
+.promo-popup{
+  position:relative;
+  background:linear-gradient(160deg,#2A1500,#1A0D00);
+  border:1px solid var(--caramel);
+  border-radius:20px;
+  padding:28px 24px 24px;
+  width:min(340px,90vw);
+  text-align:center;
+  animation:popupIn .3s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popupIn{
+  from{opacity:0;transform:scale(.85) translateY(20px);}
+  to{opacity:1;transform:scale(1) translateY(0);}
+}
+.promo-popup-close{
+  position:absolute;top:12px;right:14px;
+  background:rgba(255,255,255,.1);border:none;
+  color:var(--cream);font-size:14px;
+  width:28px;height:28px;border-radius:50%;
+  cursor:pointer;transition:background .15s;
+}
+.promo-popup-close:hover{background:rgba(255,255,255,.2);}
+.promo-popup-badge{
+  display:inline-block;
+  background:var(--caramel);color:#1A0D00;
+  font-size:11px;font-weight:800;letter-spacing:1px;
+  padding:4px 12px;border-radius:20px;
+  margin-bottom:12px;
+}
+.promo-popup-title{
+  font-size:32px;font-weight:900;
+  color:var(--cream);line-height:1.1;
+  margin-bottom:4px;
+}
+.promo-popup-title span{color:var(--caramel-light);}
+.promo-popup-divider{
+  width:40px;height:2px;
+  background:var(--caramel);
+  margin:14px auto;border-radius:2px;
+}
+.promo-popup-syarat{
+  display:flex;flex-direction:column;gap:8px;
+  margin-bottom:16px;
+}
+.promo-syarat-item{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(205,133,63,.3);
+  border-radius:10px;padding:10px 14px;
+  font-size:14px;color:var(--cream);
+}
+.promo-syarat-icon{font-size:18px;}
+.promo-syarat-or{
+  font-size:11px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1px;
+}
+.promo-popup-note{
+  font-size:12px;color:var(--muted);
+  margin-bottom:18px;line-height:1.5;
+}
+.promo-popup-cta{
+  width:100%;
+  background:linear-gradient(135deg,var(--caramel),var(--caramel-light));
+  color:#1A0D00;border:none;
+  font-family:inherit;font-weight:800;font-size:15px;
+  padding:13px;border-radius:12px;
+  cursor:pointer;transition:transform .15s;
+}
+.promo-popup-cta:active{transform:scale(.97);}
+
+/* ─────────── CART PROMO DISCOUNT ROW ─────────── */
+.cart-promo-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 16px;margin:4px 12px 0;
+  background:rgba(205,133,63,.12);
+  border:1px solid rgba(205,133,63,.3);
+  border-radius:10px;
+  animation:fadeIn .3s ease;
+}
+.cart-promo-label{font-size:13px;color:var(--caramel-light);font-weight:600;}
+.cart-promo-amount{font-size:14px;color:#4CAF50;font-weight:800;}

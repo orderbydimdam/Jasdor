@@ -359,6 +359,14 @@
 
 <!-- KOPKEN CONTENT (search, tabs, menu) -->
 <div id="page-kopken">
+
+<!-- PROMO BANNER -->
+<div class="promo-banner" onclick="openPromoPopup()">
+  <span class="promo-banner-icon">🎉</span>
+  <span class="promo-banner-text">Promo! Hemat <b>Rp2.000</b> — 2 Large atau min. Rp35.000</span>
+  <span class="promo-banner-arrow">›</span>
+</div>
+
 <div class="search-wrap">
   <div class="search-box">
     <span class="search-ico">🔍</span>
@@ -490,6 +498,29 @@
 
 <!-- FLY ANIMATION TARGET -->
 <div class="fly-item" id="flyItem"></div>
+
+<!-- PROMO POPUP -->
+<div class="promo-popup-overlay" id="promoPopupOverlay" onclick="closePromoPopup()">
+  <div class="promo-popup" onclick="event.stopPropagation()">
+    <button class="promo-popup-close" onclick="closePromoPopup()">✕</button>
+    <div class="promo-popup-badge">🎉 PROMO SPESIAL</div>
+    <div class="promo-popup-title">Hemat <span>Rp2.000</span></div>
+    <div class="promo-popup-divider"></div>
+    <div class="promo-popup-syarat">
+      <div class="promo-syarat-item">
+        <span class="promo-syarat-icon">📏</span>
+        <span>Beli <b>2 minuman Large</b></span>
+      </div>
+      <div class="promo-syarat-or">atau</div>
+      <div class="promo-syarat-item">
+        <span class="promo-syarat-icon">🛒</span>
+        <span>Belanja <b>min. Rp35.000</b></span>
+      </div>
+    </div>
+    <div class="promo-popup-note">Diskon otomatis terhitung di keranjang 🛒</div>
+    <button class="promo-popup-cta" onclick="closePromoPopup()">Yuk Order Sekarang!</button>
+  </div>
+</div>
 
 <!-- FLOAT CART -->
 <div class="float-hint" id="floatHint" onclick="openCart()">

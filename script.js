@@ -732,7 +732,31 @@ function renderCart(){
     `;
     body.insertBefore(div, empty);
   });
-  document.getElementById("totalPrice").textContent=fmt(total);
+
+  // Cek promo
+  const promoActive = PROMO.active && PROMO.check(cart);
+  const discount = promoActive ? PROMO.discount : 0;
+
+  // Hapus promo row lama kalau ada
+  const oldPromoRow = document.getElementById('cartPromoRow');
+  if(oldPromoRow) oldPromoRow.remove();
+
+  // Tambah promo row kalau syarat terpenuhi
+  if(promoActive){
+    const promoDiv = document.createElement('div');
+    promoDiv.className = 'cart-promo-row';
+    promoDiv.id = 'cartPromoRow';
+    promoDiv.innerHTML = `
+      <span class="cart-promo-label">🎉 Promo (${PROMO.label})</span>
+      <span class="cart-promo-amount">-${fmt(discount)}</span>
+    `;
+    // Masukkan sebelum total
+    const totalRow = document.getElementById('totalPrice')?.closest('.cart-total-row') || document.getElementById('totalPrice')?.parentElement;
+    if(totalRow) totalRow.parentElement.insertBefore(promoDiv, totalRow);
+    else body.appendChild(promoDiv);
+  }
+
+  document.getElementById("totalPrice").textContent = fmt(Math.max(0, total - discount));
   document.getElementById("sendBtn").disabled=false;
   if(resetBtn) resetBtn.disabled=false;
 }
@@ -868,8 +892,7 @@ function buildPreview(){
   if(note) html+=`<div class="preview-row"><span class="preview-label">Catatan:</span><span class="preview-val">${note}</span></div>`;
   html+=`<div class="pv-divider"></div>`;
   let total=0;
-  cart.forEach((ci,i)=>{
-    total+=ci.price*ci.qty;
+  cart.forEach((ci,i)=>{ total+=ci.price*ci.qty;
     let detail=ci.size ? `${ci.size} × ${ci.qty}` : `× ${ci.qty}`;
     if(ci.sugar) detail+=` · ${ci.sugar}`;
     if(ci.ice) detail+=` · ${ci.ice}`;
@@ -880,9 +903,17 @@ function buildPreview(){
       <div class="pv-item-price">${fmt(ci.price*ci.qty)}</div>
     </div>`;
   });
+  const promoActive = PROMO.active && PROMO.check(cart);
+  const discount = promoActive ? PROMO.discount : 0;
+  if(promoActive){
+    html+=`<div class="pv-item" style="color:#4CAF50">
+      <div class="pv-item-name">🎉 Promo (${PROMO.label})</div>
+      <div class="pv-item-price">-${fmt(discount)}</div>
+    </div>`;
+  }
   html+=`<div class="pv-total">
     <span class="pv-total-label">TOTAL</span>
-    <span class="pv-total-price">${fmt(total)}</span>
+    <span class="pv-total-price">${fmt(Math.max(0, total - discount))}</span>
   </div>`;
   body.innerHTML=html;
 }
@@ -913,7 +944,12 @@ function confirmSendToWA(){
     total+=ci.price*ci.qty;
   });
   msg+="──────────────────────\n";
-  msg+=`*TOTAL: ${fmt(total)}*\n`;
+  const promoActive = PROMO.active && PROMO.check(cart);
+  const discount = promoActive ? PROMO.discount : 0;
+  if(promoActive){
+    msg+=`🎉 *PROMO: -${fmt(discount)}* (${PROMO.label})\n`;
+  }
+  msg+=`*TOTAL: ${fmt(Math.max(0, total - discount))}*\n`;
   msg+="──────────────────────\n";
   msg+="*Follow & Cek Testi:*\n";
   msg+="Order : x.com/OrderbyDimDam\n";
@@ -985,7 +1021,32 @@ function showToast(msg){
   t._tid=setTimeout(()=>t.classList.remove("show"),2400);
 }
 
-// ─────────── FILTER + SEARCH ───────────
+// ─────────── PROMO CONFIG ───────────
+const PROMO = {
+  active: true,
+  label: '2 Large / min. Rp35.000',
+  discount: 2000,
+  check: (cart) => {
+    const total = cart.reduce((s, ci) => s + ci.price * ci.qty, 0);
+    const largeCount = cart.reduce((s, ci) => s + (ci.size === 'Large' ? ci.qty : 0), 0);
+    return total >= 35000 || largeCount >= 2;
+  }
+};
+
+function openPromoPopup(){
+  document.getElementById('promoPopupOverlay').classList.add('open');
+}
+function closePromoPopup(){
+  document.getElementById('promoPopupOverlay').classList.remove('open');
+  // Jangan muncul lagi di session ini setelah ditutup manual
+  sessionStorage.setItem('promoClosed','1');
+}
+
+// Auto-show promo popup sekali per session
+if(PROMO.active && !sessionStorage.getItem('promoClosed')){
+  setTimeout(openPromoPopup, 1500);
+}
+
 function filterCategory(cat, btn){
   activeCategory = cat;
   document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
