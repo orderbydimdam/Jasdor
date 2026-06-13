@@ -1153,6 +1153,7 @@ function applyFilters(){
     }
 
     // Saat search aktif, jangan tampilkan section Menu Baru (item-nya udah di section asal-nya)
+    // KECUALI kalau memang lagi di tab "Menu Baru"
     if(searchQuery && cat === 'new-menu') catMatch = false;
 
     sec.querySelectorAll(".menu-card").forEach(card=>{
@@ -1164,9 +1165,9 @@ function applyFilters(){
 
       let show = catMatch;
 
-      // Di tab "Semua": item baru hanya tampil di section new-menu, bukan di section asal-nya
-      // (cegah duplikasi karena item baru di-clone ke grid-new)
-      if(show && activeCategory === 'all' && cat !== 'new-menu' && isNewItem){
+      // Di tab "Semua" TANPA search: item baru hanya tampil di section new-menu
+      // Saat search aktif: item baru tampil di section aslinya (new-menu sudah di-hide)
+      if(show && activeCategory === 'all' && cat !== 'new-menu' && isNewItem && !searchQuery){
         show = false;
       }
 
