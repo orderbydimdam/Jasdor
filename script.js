@@ -32,6 +32,7 @@ const MENUS = {
     {name:"Cappuccino",normal:24000,disc:18000,upsize:22000,emo:"☕",img:"Cappuccino.png"},
     {name:"Latte",normal:24000,disc:18000,upsize:22000,emo:"☕",img:"Latte.png"},
     {name:"Thai Tea Coffee",normal:27000,disc:19000,upsize:null,emo:"🧋",img:"Thai Tea Coffee.png",onlyLarge:true,isNew:true},
+    {name:"Blueberry Americano",normal:21000,disc:16000,upsize:26000,emo:"☕",img:"Bluebeery_Americano.png",isNew:true},
   ],
   noncoffee: [
     // ── BEST SELLER (signature) ──
@@ -73,6 +74,9 @@ const MENUS = {
     {name:"Kopi Kenangan Mantan Frappe",normal:29000,disc:21000,upsize:26000,emo:"🧊",img:"Kopi Kenangan Mantan Frappe.png",signature:true},
     {name:"Vanilla Kenangan Frappe",normal:27000,disc:19000,upsize:24000,emo:"🧊",img:"Vanilla Kenangan Frappe.png"},
     {name:"Dutch Choco Kenangan Frappe",normal:31000,disc:22000,upsize:27000,emo:"🧊",img:"Dutch Choco Kenangan Frappe.png"},
+    {name:"Blueberry Frappe",normal:25000,disc:18000,upsize:30000,emo:"🧊",img:"Bluebeery_Frappe.png",isNew:true},
+    {name:"Chocoberry Frappe",normal:29000,disc:21000,upsize:34000,emo:"🧊",img:"Chocoberry_Frappe.png",isNew:true},
+    {name:"Coffeberry Frappe",normal:27000,disc:20000,upsize:32000,emo:"🧊",img:"Coffeberry_Frappe.png",isNew:true},
   ],
   bake: [
     {name:"Choco Muffin",normal:18000,disc:15000,upsize:null,emo:"🧁",img:"Choco Muffin.png"},
@@ -114,6 +118,8 @@ const MENUS = {
     {name:"Join The Dark Side Cookie",normal:23000,disc:17000,upsize:null,emo:"🍪",img:"Join The Dark Side Cookie.png"},
     {name:"Choco Chip Cookies",normal:16000,disc:14000,upsize:null,emo:"🍪",img:"Choco Chip Cookies.png"},
     {name:"Friend Chip Cookie",normal:19000,disc:15000,upsize:null,emo:"🍪",img:"Friend Chip Cookie.png"},
+    {name:"Salt Bread Choco Butter",normal:13000,disc:11000,upsize:null,emo:"🍞",img:"Salt_Bread_Choco_Butter.png",isNew:true},
+    {name:"Salt Bread Sausage",normal:16000,disc:13000,upsize:null,emo:"🌭",img:"Salt_Bread_Sausage.png",isNew:true},
   ],
 };
 
@@ -124,6 +130,21 @@ const ICE_NO_ZERO = ['frappe'];
 // Frappe punya pilihan whipped cream (Vanilla / Chocolate / No Whipped)
 const HAS_WHIPPED = ['frappe'];
 const NO_ICE_OPTION = [];  // (kosong) — frappe sekarang tetap tampil ice via ICE_NO_ZERO
+
+// Menu yang cuma punya Normal & Less sugar (TANPA No Sugar)
+const LESS_SUGAR_ONLY = new Set([
+  'Thai Tea Coffee','Og Thai Tea','Thai Tea Loaded','Thai Tea Aren',
+  'OG Aren Speculoos Latte','Dua Shot OG Aren','Mocha Caramel',
+  'Toffee Nut Latte','Toffee Nut Aren Latte','Toffee Nut Oat Latte',
+  'Pistachio Aren Latte','Spanish Latte','Creamy Aren Latte',
+  'Butterscotch Aren Latte','Butterscotch Sea Salt',
+  'OG Aren Milky Speculoos','Toffee Nut Choco Macchiato'
+]);
+
+// Berry frappe baru: no whipped, ice fix normal (gak bisa ganti)
+const BERRY_FRAPPE = new Set([
+  'Blueberry Frappe','Chocoberry Frappe','Coffeberry Frappe'
+]);
 
 // ── STATE ──
 let cart = []; // [{id, name, size, price, qty, sugar, ice}]
@@ -301,10 +322,13 @@ function openItemModal(cat, idx){
     'Choco Caramel Frappe': 'Whipped Cream Chocolate',
     'Dutch Choco Kenangan Frappe': 'Whipped Cream Chocolate',
     'Tiramisu Frappe': 'Whipped Cream Chocolate',
+    'Chocoberry Frappe': 'Whipped Cream Chocolate',
     'Butterscotch Kenangan Frappe': 'Whipped Cream Vanilla',
     'Matcha Kenangan Frappe': 'Whipped Cream Vanilla',
     'Kopi Kenangan Mantan Frappe': 'Whipped Cream Vanilla',
-    'Vanilla Kenangan Frappe': 'Whipped Cream Vanilla'
+    'Vanilla Kenangan Frappe': 'Whipped Cream Vanilla',
+    'Blueberry Frappe': 'Whipped Cream Vanilla',
+    'Coffeberry Frappe': 'Whipped Cream Vanilla',
   };
   const defaultWhipped = whippedDefaults[item.name] || 'No Whipped Cream';
 
@@ -415,11 +439,16 @@ function buildModalContent(){
 
   let sugarSection = '';
   if(isDrink){
+    // Menu tertentu cuma Normal & Less (tanpa No Sugar)
+    const sugarOpts = LESS_SUGAR_ONLY.has(item.name)
+      ? ['Normal Sugar','Less Sugar']
+      : ['Normal Sugar','Less Sugar','No Sugar'];
+    const sugarColClass = sugarOpts.length === 2 ? 'modal-options-2' : 'modal-options-3';
     sugarSection = `
       <div class="modal-section" data-section="sugar">
         <div class="modal-label">🥄 Sugar Level</div>
-        <div class="modal-options modal-options-3">
-          ${['Normal Sugar','Less Sugar','No Sugar'].map(v=>`
+        <div class="modal-options ${sugarColClass}">
+          ${sugarOpts.map(v=>`
             <button class="modal-opt ${modalState.sugar===v?'active':''}" onclick="setModalSugar('${v}')">
               <div class="opt-main">${v.replace(' Sugar','')}</div>
             </button>
@@ -430,27 +459,36 @@ function buildModalContent(){
 
   let iceSection = '';
   if(isDrink && !noIce){
-    // Frappe: cuma Normal & Less (tanpa No Ice). Lainnya: Normal/Less/No
-    const iceOpts = ICE_NO_ZERO.includes(cat)
-      ? ['Normal Ice','Less Ice']
-      : ['Normal Ice','Less Ice','No Ice'];
-    const iceColClass = iceOpts.length === 2 ? 'modal-options-2' : 'modal-options-3';
-    iceSection = `
-      <div class="modal-section" data-section="ice">
-        <div class="modal-label">🧊 Ice Level</div>
-        <div class="modal-options ${iceColClass}">
-          ${iceOpts.map(v=>`
-            <button class="modal-opt ${modalState.ice===v?'active':''}" onclick="setModalIce('${v}')">
-              <div class="opt-main">${v.replace(' Ice','')}</div>
-            </button>
-          `).join('')}
-        </div>
-      </div>`;
+    if(BERRY_FRAPPE.has(item.name)){
+      // Berry frappe: ice fix Normal, gak bisa diganti
+      iceSection = `
+        <div class="modal-section" data-section="ice">
+          <div class="modal-label">🧊 Ice Level</div>
+          <div class="modal-fixed-size">Normal Ice (Fixed)</div>
+        </div>`;
+    } else {
+      // Frappe: cuma Normal & Less (tanpa No Ice). Lainnya: Normal/Less/No
+      const iceOpts = ICE_NO_ZERO.includes(cat)
+        ? ['Normal Ice','Less Ice']
+        : ['Normal Ice','Less Ice','No Ice'];
+      const iceColClass = iceOpts.length === 2 ? 'modal-options-2' : 'modal-options-3';
+      iceSection = `
+        <div class="modal-section" data-section="ice">
+          <div class="modal-label">🧊 Ice Level</div>
+          <div class="modal-options ${iceColClass}">
+            ${iceOpts.map(v=>`
+              <button class="modal-opt ${modalState.ice===v?'active':''}" onclick="setModalIce('${v}')">
+                <div class="opt-main">${v.replace(' Ice','')}</div>
+              </button>
+            `).join('')}
+          </div>
+        </div>`;
+    }
   }
 
-  // Whipped Cream section (khusus frappe)
+  // Whipped Cream section (khusus frappe, KECUALI berry frappe)
   let whippedSection = '';
-  if(HAS_WHIPPED.includes(cat)){
+  if(HAS_WHIPPED.includes(cat) && !BERRY_FRAPPE.has(item.name)){
     const whippedOpts = [
       {val:'Whipped Cream Vanilla', label:'Vanilla', emo:'🍦'},
       {val:'Whipped Cream Chocolate', label:'Chocolate', emo:'🍫'},
@@ -577,7 +615,7 @@ function addToCartFromModal(ev){
     price: price,
     qty: modalState.qty,
     sugar: isDrink ? modalState.sugar : null,
-    ice: (isDrink && !NO_ICE_OPTION.includes(cat)) ? modalState.ice : null,
+    ice: (isDrink && !NO_ICE_OPTION.includes(cat)) ? (BERRY_FRAPPE.has(item.name) ? 'Normal Ice' : modalState.ice) : null,
     whipped: HAS_WHIPPED.includes(cat) ? modalState.whipped : null,
     emo: item.emo
   });
