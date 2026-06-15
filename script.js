@@ -32,7 +32,7 @@ const MENUS = {
     {name:"Cappuccino",normal:24000,disc:18000,upsize:22000,emo:"☕",img:"Cappuccino.png"},
     {name:"Latte",normal:24000,disc:18000,upsize:22000,emo:"☕",img:"Latte.png"},
     {name:"Thai Tea Coffee",normal:27000,disc:19000,upsize:null,emo:"🧋",img:"Thai Tea Coffee.png",onlyLarge:true,isNew:true},
-    {name:"Blueberry Americano",normal:21000,disc:16000,upsize:26000,emo:"☕",img:"Bluebeery_Americano.png",isNew:true},
+    {name:"Blueberry Americano",normal:21000,disc:16000,upsize:20000,emo:"☕",img:"Bluebeery_Americano.png",isNew:true},
   ],
   noncoffee: [
     // ── BEST SELLER (signature) ──
@@ -74,9 +74,9 @@ const MENUS = {
     {name:"Kopi Kenangan Mantan Frappe",normal:29000,disc:21000,upsize:26000,emo:"🧊",img:"Kopi Kenangan Mantan Frappe.png",signature:true},
     {name:"Vanilla Kenangan Frappe",normal:27000,disc:19000,upsize:24000,emo:"🧊",img:"Vanilla Kenangan Frappe.png"},
     {name:"Dutch Choco Kenangan Frappe",normal:31000,disc:22000,upsize:27000,emo:"🧊",img:"Dutch Choco Kenangan Frappe.png"},
-    {name:"Blueberry Frappe",normal:25000,disc:18000,upsize:30000,emo:"🧊",img:"Bluebeery_Frappe.png",isNew:true},
-    {name:"Chocoberry Frappe",normal:29000,disc:21000,upsize:34000,emo:"🧊",img:"Chocoberry_Frappe.png",isNew:true},
-    {name:"Coffeberry Frappe",normal:27000,disc:20000,upsize:32000,emo:"🧊",img:"Coffeberry_Frappe.png",isNew:true},
+    {name:"Blueberry Frappe",normal:25000,disc:18000,upsize:23000,emo:"🧊",img:"Bluebeery_Frappe.png",isNew:true},
+    {name:"Chocoberry Frappe",normal:29000,disc:21000,upsize:26000,emo:"🧊",img:"Chocoberry_Frappe.png",isNew:true},
+    {name:"Coffeberry Frappe",normal:27000,disc:20000,upsize:25000,emo:"🧊",img:"Coffeberry_Frappe.png",isNew:true},
   ],
   bake: [
     {name:"Choco Muffin",normal:18000,disc:15000,upsize:null,emo:"🧁",img:"Choco Muffin.png"},
