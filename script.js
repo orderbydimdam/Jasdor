@@ -322,13 +322,10 @@ function openItemModal(cat, idx){
     'Choco Caramel Frappe': 'Whipped Cream Chocolate',
     'Dutch Choco Kenangan Frappe': 'Whipped Cream Chocolate',
     'Tiramisu Frappe': 'Whipped Cream Chocolate',
-    'Chocoberry Frappe': 'Whipped Cream Chocolate',
     'Butterscotch Kenangan Frappe': 'Whipped Cream Vanilla',
     'Matcha Kenangan Frappe': 'Whipped Cream Vanilla',
     'Kopi Kenangan Mantan Frappe': 'Whipped Cream Vanilla',
     'Vanilla Kenangan Frappe': 'Whipped Cream Vanilla',
-    'Blueberry Frappe': 'Whipped Cream Vanilla',
-    'Coffeberry Frappe': 'Whipped Cream Vanilla',
   };
   const defaultWhipped = whippedDefaults[item.name] || 'No Whipped Cream';
 
@@ -616,7 +613,7 @@ function addToCartFromModal(ev){
     qty: modalState.qty,
     sugar: isDrink ? modalState.sugar : null,
     ice: (isDrink && !NO_ICE_OPTION.includes(cat)) ? (BERRY_FRAPPE.has(item.name) ? 'Normal Ice' : modalState.ice) : null,
-    whipped: HAS_WHIPPED.includes(cat) ? modalState.whipped : null,
+    whipped: (HAS_WHIPPED.includes(cat) && !BERRY_FRAPPE.has(item.name)) ? modalState.whipped : null,
     emo: item.emo
   });
   saveCart();
