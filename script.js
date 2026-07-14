@@ -412,7 +412,7 @@ function buildModalContent(){
   const imgHtml = `<img src="menu_items/${encodeURIComponent(item.img)}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:64px">${item.emo}</span>`;
 
   const sigBadge = item.signature ? `<div class="signature-tag" style="top:14px;left:14px">⭐ Signature</div>` : '';
-  const newBadge = item.isNew ? `<div class="new-tag" style="top:14px;right:60px"><svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 1l2.4 7.6L22 11l-7.6 2.4L12 21l-2.4-7.6L2 11l7.6-2.4z"/></svg>BARU</div>` : '';
+  const newBadge = item.isNew ? `<div class="new-tag" style="top:14px;left:14px;right:auto;width:max-content"><svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 1l2.4 7.6L22 11l-7.6 2.4L12 21l-2.4-7.6L2 11l7.6-2.4z"/></svg>BARU</div>` : '';
 
   let sizeSection = '';
   if(isDrink){
