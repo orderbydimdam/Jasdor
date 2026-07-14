@@ -20,6 +20,7 @@ const MENUS = {
     {name:"Pistachio Aren Latte",normal:21000,disc:15000,upsize:19000,emo:"☕",img:"Pistachio Aren Latte.png"},
     {name:"Cafe Malt Latte",normal:25000,disc:17000,upsize:21000,emo:"☕",img:"Cafe Malt Latte.png"},
     {name:"Caramel Latte",normal:28000,disc:19000,upsize:23500,emo:"☕",img:"Caramel Latte.png"},
+    {name:"Creamy Caramel Latte",normal:28000,disc:19000,upsize:22500,emo:"☕",img:"Creamy Caramel Latte.png",isNew:true},
     {name:"Dua Shot Iced Shaken",normal:30000,disc:20000,upsize:26000,emo:"☕",img:"Dua Shot Iced Shaken.png"},
     {name:"Hazelnut Latte",normal:28000,disc:19000,upsize:23500,emo:"☕",img:"Hazelnut Latte.png"},
     {name:"Kopi Susu Black Aren",normal:23000,disc:16000,upsize:21000,emo:"☕",img:"Kopi Susu Black Aren.png"},
@@ -79,6 +80,7 @@ const MENUS = {
     {name:"Coffeberry Frappe",normal:27000,disc:19000,upsize:24000,emo:"🧊",img:"Coffeberry_Frappe.png",isNew:true},
   ],
   bake: [
+    {name:"Coffee Butter Bun",normal:13000,disc:11000,upsize:null,emo:"🍞",img:"Coffee Butter Bun.png"},
     {name:"Choco Muffin",normal:18000,disc:14000,upsize:null,emo:"🧁",img:"Choco Muffin.png"},
     {name:"Blueberry Muffin",normal:18000,disc:14000,upsize:null,emo:"🧁",img:"Blueberry Muffin.png"},
     {name:"Choco Mocha Swirl Toast",normal:20000,disc:15000,upsize:null,emo:"🍞",img:"Choco Mocha Swirl Toast.png"},
@@ -138,7 +140,8 @@ const LESS_SUGAR_ONLY = new Set([
   'Toffee Nut Latte','Toffee Nut Aren Latte','Toffee Nut Oat Latte',
   'Pistachio Aren Latte','Spanish Latte','Creamy Aren Latte',
   'Butterscotch Aren Latte','Butterscotch Sea Salt',
-  'OG Aren Milky Speculoos','Toffee Nut Choco Macchiato'
+  'OG Aren Milky Speculoos','Toffee Nut Choco Macchiato',
+  'Creamy Caramel Latte'
 ]);
 
 // Berry frappe baru: no whipped, ice fix normal (gak bisa ganti)
