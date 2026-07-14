@@ -41,6 +41,10 @@ const MENUS = {
     {name:"Raspberry Hibiscus",normal:22000,disc:16000,upsize:20000,emo:"🌺",img:"Raspberry Hibiscus.png",signature:true},
     {name:"Matcha Latte",normal:27000,disc:18000,upsize:22000,emo:"🍵",img:"Matcha Latte.png",signature:true},
     {name:"Babyccino",normal:21000,disc:15000,upsize:null,emo:"🥛",img:"Babyccino.png",signature:true},
+    // ── THAI TEA FAMILY (taruh atas biar keliatan) ──
+    {name:"Og Thai Tea",normal:21000,disc:15000,upsize:19000,emo:"🧋",img:"Og Thai Tea.png",isNew:true},
+    {name:"Thai Tea Loaded",normal:29000,disc:20000,upsize:null,emo:"🧋",img:"Thai Tea Loaded.png",onlyLarge:true,isNew:true},
+    {name:"Thai Tea Aren",normal:26000,disc:18000,upsize:null,emo:"🧋",img:"Thai Tea Aren.png",onlyLarge:true,isNew:true},
     // ── REGULAR ──
     {name:"OG Aren Milky Speculoos",normal:25000,disc:17000,upsize:21000,emo:"🥛",img:"OG Aren Milky Speculoos.png"},
     {name:"Choco Caramel",normal:21000,disc:15000,upsize:19000,emo:"🍫",img:"Choco Caramel.png"},
@@ -58,9 +62,6 @@ const MENUS = {
     {name:"Kenangan Milk Tea",normal:23000,disc:16000,upsize:20000,emo:"🧋",img:"Kenangan Milk Tea.png"},
     {name:"Oreo Shake",normal:28000,disc:19000,upsize:23500,emo:"🍪",img:"Oreo Shake.png"},
     {name:"Susu Grass Jelly",normal:26000,disc:18000,upsize:22000,emo:"🥛",img:"Susu Grass Jelly.png"},
-    {name:"Og Thai Tea",normal:21000,disc:15000,upsize:19000,emo:"🧋",img:"Og Thai Tea.png",isNew:true},
-    {name:"Thai Tea Loaded",normal:29000,disc:20000,upsize:null,emo:"🧋",img:"Thai Tea Loaded.png",onlyLarge:true,isNew:true},
-    {name:"Thai Tea Aren",normal:26000,disc:18000,upsize:null,emo:"🧋",img:"Thai Tea Aren.png",onlyLarge:true,isNew:true},
   ],
   oatside: [
     {name:"Oatside Kopi Kenangan",normal:24000,disc:17000,upsize:21500,emo:"🥛",img:"Oatside Kopi Kenangan.png"},
@@ -248,13 +249,21 @@ function renderMenus(){
   const newGrid = document.getElementById("grid-new");
   if(newGrid){
     newGrid.innerHTML='';
+    let newItems = [];
     Object.keys(MENUS).forEach(cat=>{
       MENUS[cat].forEach((item,idx)=>{
-        if(item.isNew){
-          const card = buildMenuCard(cat, item, idx, true);
-          newGrid.appendChild(card);
-        }
+        if(item.isNew) newItems.push({cat, idx, item});
       });
+    });
+    // Coffee Butter Bun ditaruh sebelahan sama Creamy Caramel Latte biar lebih keliatan
+    const cbbPos = newItems.findIndex(x=>x.item.name==='Coffee Butter Bun');
+    if(cbbPos > 1){
+      const [cbb] = newItems.splice(cbbPos,1);
+      newItems.splice(1,0,cbb);
+    }
+    newItems.forEach(({cat,idx,item})=>{
+      const card = buildMenuCard(cat, item, idx, true);
+      newGrid.appendChild(card);
     });
   }
 }

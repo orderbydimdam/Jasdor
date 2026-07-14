@@ -462,7 +462,7 @@ header{
   box-shadow:0 2px 8px rgba(212,136,42,.45);
 }
 .new-tag{
-  position:absolute;top:7px;right:7px;
+  position:absolute;top:7px;left:7px;
   background:linear-gradient(135deg,#52C87A,#2D8F4F);
   color:white;
   font-size:9px;font-weight:800;letter-spacing:.5px;
@@ -479,9 +479,9 @@ header{
   0%,100%{transform:scale(1)}
   50%{transform:scale(1.08)}
 }
-.menu-card.selected .new-tag{
-  /* tetap visible ketika selected, tapi geser sedikit biar gak ketabrak ✓ */
-  right:34px;
+.signature-tag + .new-tag{
+  /* kalau signature & new nempel bareng di kiri, susun ke bawah biar gak numpuk */
+  top:30px;
 }
 /* Sparkle star icon di tab "Menu Baru" & section header "Menu Baru" */
 .tab-newicon{
