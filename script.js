@@ -80,7 +80,7 @@ const MENUS = {
     {name:"Coffeberry Frappe",normal:27000,disc:19000,upsize:24000,emo:"🧊",img:"Coffeberry_Frappe.png",isNew:true},
   ],
   bake: [
-    {name:"Coffee Butter Bun",normal:13000,disc:11000,upsize:null,emo:"🍞",img:"Coffee Butter Bun.png"},
+    {name:"Coffee Butter Bun",normal:13000,disc:11000,upsize:null,emo:"🍞",img:"Coffee Butter Bun.png",isNew:true},
     {name:"Choco Muffin",normal:18000,disc:14000,upsize:null,emo:"🧁",img:"Choco Muffin.png"},
     {name:"Blueberry Muffin",normal:18000,disc:14000,upsize:null,emo:"🧁",img:"Blueberry Muffin.png"},
     {name:"Choco Mocha Swirl Toast",normal:20000,disc:15000,upsize:null,emo:"🍞",img:"Choco Mocha Swirl Toast.png"},
