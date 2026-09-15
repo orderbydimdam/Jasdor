@@ -1,5 +1,5 @@
 // Service worker: PWA install eligibility + caching biar loading lebih cepet
-const CACHE_NAME = 'jasdor-v4';
+const CACHE_NAME = 'jasdor-v5';
 const CORE_ASSETS = [
   './',
   './index.html',
