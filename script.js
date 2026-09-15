@@ -29,7 +29,7 @@ const MENUS = {
     {name:"Pistachio Aren Latte",normal:21000,disc:15000,upsize:19000,emo:"☕",img:"Pistachio Aren Latte.png"},
     {name:"Cafe Malt Latte",normal:25000,disc:17000,upsize:21000,emo:"☕",img:"Cafe Malt Latte.png"},
     {name:"Caramel Latte",normal:28000,disc:19000,upsize:23500,emo:"☕",img:"Caramel Latte.png"},
-    {name:"Creamy Caramel Latte",normal:28000,disc:19000,upsize:22500,emo:"☕",img:"Creamy Caramel Latte.png",isNew:true},
+    {name:"Creamy Caramel Latte",normal:28000,disc:19000,upsize:22500,emo:"☕",img:"Creamy Caramel Latte.png"},
     {name:"Dua Shot Iced Shaken",normal:30000,disc:20000,upsize:26000,emo:"☕",img:"Dua Shot Iced Shaken.png"},
     {name:"Hazelnut Latte",normal:28000,disc:19000,upsize:23500,emo:"☕",img:"Hazelnut Latte.png"},
     {name:"Kopi Susu Black Aren",normal:23000,disc:16000,upsize:21000,emo:"☕",img:"Kopi Susu Black Aren.png"},
@@ -41,8 +41,10 @@ const MENUS = {
     {name:"Butterscotch Sea Salt",normal:27000,disc:18000,upsize:22500,emo:"☕",img:"Butterscotch Sea Salt.png"},
     {name:"Cappuccino",normal:24000,disc:17000,upsize:21000,emo:"☕",img:"Cappuccino.png"},
     {name:"Latte",normal:24000,disc:17000,upsize:21000,emo:"☕",img:"Latte.png"},
-    {name:"Thai Tea Coffee",normal:27000,disc:18000,upsize:null,emo:"🧋",img:"Thai Tea Coffee.png",onlyLarge:true,isNew:true},
-    {name:"Blueberry Americano",normal:21000,disc:15000,upsize:19000,emo:"☕",img:"Bluebeery_Americano.png",isNew:true},
+    {name:"Thai Tea Coffee",normal:27000,disc:18000,upsize:null,emo:"🧋",img:"Thai Tea Coffee.png",onlyLarge:true},
+    // ── MENU BARU ──
+    {name:"Korean Banana Latte",normal:25000,disc:16000,upsize:21000,emo:"🍌",img:"Korean Banana Latte.png",isNew:true},
+    {name:"Banana Americano",normal:21000,disc:15000,upsize:19000,emo:"🍌",img:"Banana Americano.png",isNew:true},
   ],
   noncoffee: [
     // ── BEST SELLER (signature) ──
@@ -51,9 +53,9 @@ const MENUS = {
     {name:"Matcha Latte",normal:27000,disc:18000,upsize:22000,emo:"🍵",img:"Matcha Latte.png",signature:true},
     {name:"Babyccino",normal:21000,disc:15000,upsize:null,emo:"🥛",img:"Babyccino.png",signature:true},
     // ── THAI TEA FAMILY (taruh atas biar keliatan) ──
-    {name:"Og Thai Tea",normal:21000,disc:15000,upsize:19000,emo:"🧋",img:"Og Thai Tea.png",isNew:true},
-    {name:"Thai Tea Loaded",normal:29000,disc:20000,upsize:null,emo:"🧋",img:"Thai Tea Loaded.png",onlyLarge:true,isNew:true},
-    {name:"Thai Tea Aren",normal:26000,disc:18000,upsize:null,emo:"🧋",img:"Thai Tea Aren.png",onlyLarge:true,isNew:true},
+    {name:"Og Thai Tea",normal:21000,disc:15000,upsize:19000,emo:"🧋",img:"Og Thai Tea.png"},
+    {name:"Thai Tea Loaded",normal:29000,disc:20000,upsize:null,emo:"🧋",img:"Thai Tea Loaded.png",onlyLarge:true},
+    {name:"Thai Tea Aren",normal:26000,disc:18000,upsize:null,emo:"🧋",img:"Thai Tea Aren.png",onlyLarge:true},
     // ── REGULAR ──
     {name:"OG Aren Milky Speculoos",normal:25000,disc:17000,upsize:21000,emo:"🥛",img:"OG Aren Milky Speculoos.png"},
     {name:"Choco Caramel",normal:21000,disc:15000,upsize:19000,emo:"🍫",img:"Choco Caramel.png"},
@@ -71,6 +73,8 @@ const MENUS = {
     {name:"Kenangan Milk Tea",normal:23000,disc:16000,upsize:20000,emo:"🧋",img:"Kenangan Milk Tea.png"},
     {name:"Oreo Shake",normal:28000,disc:19000,upsize:23500,emo:"🍪",img:"Oreo Shake.png"},
     {name:"Susu Grass Jelly",normal:26000,disc:18000,upsize:22000,emo:"🥛",img:"Susu Grass Jelly.png"},
+    // ── MENU BARU ──
+    {name:"Banana Choco",normal:26000,disc:17000,upsize:21000,emo:"🍌",img:"Banana Choco.png",isNew:true},
   ],
   oatside: [
     {name:"Oatside Kopi Kenangan",normal:24000,disc:17000,upsize:21500,emo:"🥛",img:"Oatside Kopi Kenangan.png"},
@@ -85,12 +89,9 @@ const MENUS = {
     {name:"Kopi Kenangan Mantan Frappe",normal:29000,disc:20000,upsize:25000,emo:"🧊",img:"Kopi Kenangan Mantan Frappe.png",signature:true},
     {name:"Vanilla Kenangan Frappe",normal:27000,disc:18000,upsize:23000,emo:"🧊",img:"Vanilla Kenangan Frappe.png"},
     {name:"Dutch Choco Kenangan Frappe",normal:31000,disc:21000,upsize:26000,emo:"🧊",img:"Dutch Choco Kenangan Frappe.png"},
-    {name:"Blueberry Frappe",normal:25000,disc:17000,upsize:22000,emo:"🧊",img:"Bluebeery_Frappe.png",isNew:true},
-    {name:"Chocoberry Frappe",normal:29000,disc:20000,upsize:25000,emo:"🧊",img:"Chocoberry_Frappe.png",isNew:true},
-    {name:"Coffeberry Frappe",normal:27000,disc:19000,upsize:24000,emo:"🧊",img:"Coffeberry_Frappe.png",isNew:true},
+    {name:"Coffeberry Frappe",normal:27000,disc:19000,upsize:24000,emo:"🧊",img:"Coffeberry_Frappe.png"},
   ],
   bake: [
-    {name:"Coffee Butter Bun",normal:13000,disc:11000,upsize:null,emo:"🍞",img:"Coffee Butter Bun.png",isNew:true},
     {name:"Choco Muffin",normal:18000,disc:14000,upsize:null,emo:"🧁",img:"Choco Muffin.png"},
     {name:"Blueberry Muffin",normal:18000,disc:14000,upsize:null,emo:"🧁",img:"Blueberry Muffin.png"},
     {name:"Choco Mocha Swirl Toast",normal:20000,disc:15000,upsize:null,emo:"🍞",img:"Choco Mocha Swirl Toast.png"},
@@ -130,8 +131,12 @@ const MENUS = {
     {name:"Join The Dark Side Cookie",normal:23000,disc:16000,upsize:null,emo:"🍪",img:"Join The Dark Side Cookie.png"},
     {name:"Choco Chip Cookies",normal:16000,disc:13000,upsize:null,emo:"🍪",img:"Choco Chip Cookies.png"},
     {name:"Friend Chip Cookie",normal:19000,disc:14000,upsize:null,emo:"🍪",img:"Friend Chip Cookie.png"},
-    {name:"Salt Bread Choco Butter",normal:13000,disc:10000,upsize:null,emo:"🍞",img:"Salt_Bread_Choco_Butter.png",isNew:true},
-    {name:"Salt Bread Sausage",normal:16000,disc:12000,upsize:null,emo:"🌭",img:"Salt_Bread_Sausage.png",isNew:true},
+    {name:"Salt Bread Choco Butter",normal:13000,disc:10000,upsize:null,emo:"🍞",img:"Salt_Bread_Choco_Butter.png"},
+    {name:"Salt Bread Sausage",normal:16000,disc:12000,upsize:null,emo:"🌭",img:"Salt_Bread_Sausage.png"},
+    // ── MENU BARU ──
+    {name:"Bananachoco Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Bananachoco Soft Baked Cookie.png",isNew:true},
+    {name:"Oatmeal Raisin Soft Baked Cookie",normal:20000,disc:15000,upsize:null,emo:"🍪",img:"Oatmeal Raisin Soft Baked Cookie.png",isNew:true},
+    {name:"Sweet Honey Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Sweet Honey Soft Baked Cookie.png",isNew:true},
   ],
 };
 
@@ -151,12 +156,13 @@ const LESS_SUGAR_ONLY = new Set([
   'Pistachio Aren Latte','Spanish Latte','Creamy Aren Latte',
   'Butterscotch Aren Latte','Butterscotch Sea Salt',
   'OG Aren Milky Speculoos','Toffee Nut Choco Macchiato',
-  'Creamy Caramel Latte'
+  'Creamy Caramel Latte',
+  'Korean Banana Latte','Banana Americano','Banana Choco'
 ]);
 
 // Berry frappe baru: no whipped, ice fix normal (gak bisa ganti)
 const BERRY_FRAPPE = new Set([
-  'Blueberry Frappe','Chocoberry Frappe','Coffeberry Frappe'
+  'Coffeberry Frappe'
 ]);
 
 // ── STATE ──
@@ -264,12 +270,6 @@ function renderMenus(){
         if(item.isNew) newItems.push({cat, idx, item});
       });
     });
-    // Coffee Butter Bun ditaruh sebelahan sama Creamy Caramel Latte biar lebih keliatan
-    const cbbPos = newItems.findIndex(x=>x.item.name==='Coffee Butter Bun');
-    if(cbbPos > 1){
-      const [cbb] = newItems.splice(cbbPos,1);
-      newItems.splice(1,0,cbb);
-    }
     newItems.forEach(({cat,idx,item})=>{
       const card = buildMenuCard(cat, item, idx, true);
       newGrid.appendChild(card);
@@ -1013,6 +1013,8 @@ function confirmSendToWA(){
   }
   msg+=`*TOTAL: ${fmt(Math.max(0, total - discount))}*\n`;
   msg+="──────────────────────\n";
+  msg+="Ikuti saluran ORDERBYDIMDAM di WhatsApp:\n";
+  msg+="https://whatsapp.com/channel/0029VbDVhq52ZjCtdiTnBY0g\n\n";
   msg+="*Follow & Cek Testi:*\n";
   msg+="Order : x.com/OrderbyDimDam\n";
   msg+="Testi  : x.com/Testi_Dimdam\n";
@@ -1964,6 +1966,8 @@ function brandSendToWA(){
   }
 
   msg += "──────────────────────\n";
+  msg += "Ikuti saluran ORDERBYDIMDAM di WhatsApp:\n";
+  msg += "https://whatsapp.com/channel/0029VbDVhq52ZjCtdiTnBY0g\n\n";
   msg += "*Follow & Cek Testi:*\n";
   msg += "Order : x.com/OrderbyDimDam\n";
   msg += "Testi  : x.com/Testi_Dimdam\n";
