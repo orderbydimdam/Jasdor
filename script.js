@@ -1013,12 +1013,13 @@ function confirmSendToWA(){
   }
   msg+=`*TOTAL: ${fmt(Math.max(0, total - discount))}*\n`;
   msg+="──────────────────────\n";
-  msg+="Ikuti saluran ORDERBYDIMDAM di WhatsApp:\n";
-  msg+="https://whatsapp.com/channel/0029VbDVhq52ZjCtdiTnBY0g\n\n";
-  msg+="*Follow & Cek Testi:*\n";
-  msg+="Order : x.com/OrderbyDimDam\n";
-  msg+="Testi  : x.com/Testi_Dimdam\n";
-  msg+=`WA      : wa.me/${WA_NUMBER}`;
+  msg+="✨ *Ikuti Saluran WA Kita, Yuk!* ✨\n";
+  msg+="Biar gak ketinggalan promo & menu baru 👇\n";
+  msg+="📲 https://whatsapp.com/channel/0029VbDVhq52ZjCtdiTnBY0g\n\n";
+  msg+="🌐 *Follow & Cek Testi Juga:*\n";
+  msg+="🛒 Order : x.com/OrderbyDimDam\n";
+  msg+="⭐ Testi  : x.com/Testi_Dimdam\n";
+  msg+=`💬 WA    : wa.me/${WA_NUMBER}`;
 
   const url="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg);
   window._lastWAUrl = url; // simpan untuk tombol fallback
@@ -1966,12 +1967,13 @@ function brandSendToWA(){
   }
 
   msg += "──────────────────────\n";
-  msg += "Ikuti saluran ORDERBYDIMDAM di WhatsApp:\n";
-  msg += "https://whatsapp.com/channel/0029VbDVhq52ZjCtdiTnBY0g\n\n";
-  msg += "*Follow & Cek Testi:*\n";
-  msg += "Order : x.com/OrderbyDimDam\n";
-  msg += "Testi  : x.com/Testi_Dimdam\n";
-  msg += `WA      : wa.me/${WA_NUMBER}`;
+  msg += "✨ *Ikuti Saluran WA Kita, Yuk!* ✨\n";
+  msg += "Biar gak ketinggalan promo & menu baru 👇\n";
+  msg += "📲 https://whatsapp.com/channel/0029VbDVhq52ZjCtdiTnBY0g\n\n";
+  msg += "🌐 *Follow & Cek Testi Juga:*\n";
+  msg += "🛒 Order : x.com/OrderbyDimDam\n";
+  msg += "⭐ Testi  : x.com/Testi_Dimdam\n";
+  msg += `💬 WA    : wa.me/${WA_NUMBER}`;
 
   const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
   window._lastWAUrl = url; // simpan untuk tombol fallback
