@@ -20,6 +20,7 @@ const MENUS = {
     {name:"Spanish Latte",normal:21000,disc:15000,upsize:19500,emo:"☕",img:"Spanish Latte.webp",signature:true},
     {name:"Caramel Macchiato",normal:30000,disc:20000,upsize:26000,emo:"☕",img:"Caramel Macchiato.webp",signature:true},
     // ── MENU BARU ──
+    {name:"Taro Cloud Latte",normal:24000,disc:17000,upsize:21000,emo:"🍠",img:"Taro Cloud Latte.webp",isNew:true},
     {name:"Korean Banana Latte",normal:25000,disc:16000,upsize:21000,emo:"🍌",img:"Korean Banana Latte.webp",isNew:true},
     {name:"Banana Americano",normal:21000,disc:15000,upsize:19000,emo:"🍌",img:"Banana Americano.webp",isNew:true},
     // ── REGULAR ──
@@ -53,11 +54,10 @@ const MENUS = {
     {name:"Matcha Latte",normal:27000,disc:18000,upsize:22000,emo:"🍵",img:"Matcha Latte.webp",signature:true},
     {name:"Babyccino",normal:21000,disc:15000,upsize:null,emo:"🥛",img:"Babyccino.webp",signature:true},
     // ── MENU BARU ──
-    {name:"Banana Choco",normal:26000,disc:17000,upsize:21000,emo:"🍌",img:"Banana Choco.webp",isNew:true},
     {name:"Taro Cloud Matcha",normal:24000,disc:17000,upsize:21000,emo:"🍠",img:"Taro Cloud Matcha.webp",isNew:true},
     {name:"Taro Milk",normal:21000,disc:15000,upsize:19000,emo:"🍠",img:"Taro Milk.webp",isNew:true},
-    {name:"Taro Cloud Latte",normal:24000,disc:17000,upsize:21000,emo:"🍠",img:"Taro Cloud Latte.webp",isNew:true},
     {name:"Taro Cloud Milk Tea",normal:21000,disc:15000,upsize:19000,emo:"🍠",img:"Taro Cloud Milk Tea.webp",isNew:true},
+    {name:"Banana Choco",normal:26000,disc:17000,upsize:21000,emo:"🍌",img:"Banana Choco.webp",isNew:true},
     // ── THAI TEA FAMILY (taruh atas biar keliatan) ──
     {name:"Og Thai Tea",normal:21000,disc:15000,upsize:19000,emo:"🧋",img:"Og Thai Tea.webp"},
     {name:"Thai Tea Loaded",normal:29000,disc:20000,upsize:null,emo:"🧋",img:"Thai Tea Loaded.webp",onlyLarge:true},
@@ -126,6 +126,12 @@ const MENUS = {
     {name:"Wahyu Sapi Toast",normal:21000,disc:15000,upsize:null,emo:"🥪",img:"Wahyu Sapi Toast.webp"},
   ],
   food: [
+    {name:"Bananachoco Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Bananachoco Soft Baked Cookie.webp",isNew:true},
+    {name:"Oatmeal Raisin Soft Baked Cookie",normal:20000,disc:15000,upsize:null,emo:"🍪",img:"Oatmeal Raisin Soft Baked Cookie.webp",isNew:true},
+    {name:"Sweet Honey Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Sweet Honey Soft Baked Cookie.webp",isNew:true},
+    {name:"Triple Cheese Bagel",normal:21000,disc:15000,upsize:null,emo:"🥯",img:"Triple Cheese Bagel.webp",isNew:true},
+    {name:"Beef & Cheese Jalapeño Bagel",normal:23000,disc:16000,upsize:null,emo:"🥯",img:"Beef & Cheese Jalapeno Bagel.webp",isNew:true},
+    {name:"Double Choco Bagel",normal:21000,disc:15000,upsize:null,emo:"🥯",img:"Double Choco Bagel.webp",isNew:true},
     {name:"Butter Croissant",normal:17000,disc:13000,upsize:null,emo:"🥐",img:"Butter Croissant.webp"},
     {name:"Chocolate Croissant",normal:21000,disc:15000,upsize:null,emo:"🥐",img:"Chocolate Croissant.webp"},
     {name:"Roti Coklat Klasik",normal:11000,disc:9000,upsize:null,emo:"🍞",img:"Roti Coklat Klasik.webp"},
@@ -138,12 +144,6 @@ const MENUS = {
     {name:"Salt Bread Choco Butter",normal:13000,disc:10000,upsize:null,emo:"🍞",img:"Salt_Bread_Choco_Butter.webp"},
     {name:"Salt Bread Sausage",normal:16000,disc:12000,upsize:null,emo:"🌭",img:"Salt_Bread_Sausage.webp"},
     // ── MENU BARU ──
-    {name:"Bananachoco Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Bananachoco Soft Baked Cookie.webp",isNew:true},
-    {name:"Oatmeal Raisin Soft Baked Cookie",normal:20000,disc:15000,upsize:null,emo:"🍪",img:"Oatmeal Raisin Soft Baked Cookie.webp",isNew:true},
-    {name:"Sweet Honey Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Sweet Honey Soft Baked Cookie.webp",isNew:true},
-    {name:"Triple Cheese Bagel",normal:21000,disc:15000,upsize:null,emo:"🥯",img:"Triple Cheese Bagel.webp",isNew:true},
-    {name:"Beef & Cheese Jalapeño Bagel",normal:23000,disc:16000,upsize:null,emo:"🥯",img:"Beef & Cheese Jalapeno Bagel.webp",isNew:true},
-    {name:"Double Choco Bagel",normal:21000,disc:15000,upsize:null,emo:"🥯",img:"Double Choco Bagel.webp",isNew:true},
   ],
 };
 
@@ -277,6 +277,16 @@ function renderMenus(){
         if(item.isNew) newItems.push({cat, idx, item});
       });
     });
+    // Urutan Menu Baru: Taro dulu, baru Banana, lalu sisanya (cookie, bagel, dll)
+    const newRank = ({cat,item})=>{
+      if(/taro/i.test(item.name)) return 0;
+      if(cat!=='food' && /banana/i.test(item.name)) return 1;
+      return 2;
+    };
+    newItems = newItems
+      .map((x,i)=>({x,i}))
+      .sort((a,b)=> newRank(a.x)-newRank(b.x) || a.i-b.i)
+      .map(o=>o.x);
     newItems.forEach(({cat,idx,item})=>{
       const card = buildMenuCard(cat, item, idx, true);
       newGrid.appendChild(card);
@@ -2971,3 +2981,39 @@ window.startTour = tourStart;
 
 // ─────────── (cart badge nav dihapus — cart pakai floating CTA bar) ───────────
 
+
+
+// ----------- SCROLL SPY: tab kategori ikut geser pas digulir -----------
+(function(){
+  const SECTION_TO_TAB = {'new-menu':'new'};
+  let ticking = false;
+  let lastTab = null;
+
+  function update(){
+    ticking = false;
+    if(activeCategory !== 'all') return;          // mode filter 1 kategori -> gak perlu
+    const tabsBar = document.getElementById('tabsBar');
+    if(!tabsBar) return;
+    const OFFSET = 240;                            // tinggi header + tabs yang nempel di atas
+    let current = 'all';
+    document.querySelectorAll('.cat-section').forEach(sec=>{
+      if(sec.classList.contains('hidden')) return;
+      if(sec.getBoundingClientRect().top <= OFFSET) current = SECTION_TO_TAB[sec.id] || sec.id;
+    });
+    if(current === lastTab) return;
+    lastTab = current;
+    const btn = tabsBar.querySelector('.tab[data-cat="'+current+'"]');
+    if(!btn) return;
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    btn.classList.add('active');
+    const target = tabsBar.scrollLeft + (btn.getBoundingClientRect().left - tabsBar.getBoundingClientRect().left)
+                   - (tabsBar.clientWidth/2) + (btn.offsetWidth/2);
+    tabsBar.scrollTo({left: target, behavior:'smooth'});
+  }
+
+  window.addEventListener('scroll', ()=>{
+    if(!ticking){ ticking = true; requestAnimationFrame(update); }
+  }, {passive:true});
+  // reset cache kalau user pindah kategori/filter manual
+  document.addEventListener('click', e=>{ if(e.target.closest('.tab')) lastTab = null; });
+})();
