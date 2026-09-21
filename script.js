@@ -1,4 +1,4 @@
-\const WA_NUMBER = "6287790512927";
+const WA_NUMBER = "6287790512927";
 
 // ── ANALYTICS HELPER ──
 // Aman dipanggil walau GA4 belum ke-load / user pake adblock, gak bakal error
@@ -2355,6 +2355,9 @@ document.addEventListener('click', function(e){
   }
   if(document.readyState === 'complete'){ dismiss(); }
   else { window.addEventListener('load', dismiss); }
+  // Failsafe: kalau event 'load' gak pernah nyala (resource gantung, network block, dll),
+  // paksa tutup splash setelah 4 detik biar user gak stuck selamanya
+  setTimeout(dismiss, 4000);
 })();
 
 // ─────────── 3. SKELETON LOADING ───────────
