@@ -20,6 +20,7 @@ const MENUS = {
     {name:"Spanish Latte",normal:21000,disc:15000,upsize:19500,emo:"☕",img:"Spanish Latte.png",signature:true},
     {name:"Caramel Macchiato",normal:30000,disc:20000,upsize:26000,emo:"☕",img:"Caramel Macchiato.png",signature:true},
     // ── MENU BARU ──
+    {name:"Taro Cloud Latte",normal:24000,disc:17000,upsize:21000,emo:"🍠",img:"Taro Cloud Latte.webp",isNew:true},
     {name:"Korean Banana Latte",normal:25000,disc:16000,upsize:21000,emo:"🍌",img:"Korean Banana Latte.png",isNew:true},
     {name:"Banana Americano",normal:21000,disc:15000,upsize:19000,emo:"🍌",img:"Banana Americano.png",isNew:true},
     // ── REGULAR ──
@@ -53,11 +54,11 @@ const MENUS = {
     {name:"Matcha Latte",normal:27000,disc:18000,upsize:22000,emo:"🍵",img:"Matcha Latte.png",signature:true},
     {name:"Babyccino",normal:21000,disc:15000,upsize:null,emo:"🥛",img:"Babyccino.png",signature:true},
     // ── MENU BARU ──
-    {name:"Banana Choco",normal:26000,disc:17000,upsize:21000,emo:"🍌",img:"Banana Choco.png",isNew:true},
     {name:"Taro Cloud Matcha",normal:24000,disc:17000,upsize:21000,emo:"🍠",img:"Taro Cloud Matcha.webp",isNew:true},
     {name:"Taro Milk",normal:21000,disc:15000,upsize:19000,emo:"🍠",img:"Taro Milk.webp",isNew:true},
     {name:"Taro Cloud Latte",normal:24000,disc:17000,upsize:21000,emo:"🍠",img:"Taro Cloud Latte.webp",isNew:true},
     {name:"Taro Cloud Milk Tea",normal:21000,disc:15000,upsize:19000,emo:"🍠",img:"Taro Cloud Milk Tea.webp",isNew:true},
+    {name:"Banana Choco",normal:26000,disc:17000,upsize:21000,emo:"🍌",img:"Banana Choco.png",isNew:true},
     // ── THAI TEA FAMILY (taruh atas biar keliatan) ──
     {name:"Og Thai Tea",normal:21000,disc:15000,upsize:19000,emo:"🧋",img:"Og Thai Tea.png"},
     {name:"Thai Tea Loaded",normal:29000,disc:20000,upsize:null,emo:"🧋",img:"Thai Tea Loaded.png",onlyLarge:true},
@@ -138,12 +139,12 @@ const MENUS = {
     {name:"Salt Bread Choco Butter",normal:13000,disc:10000,upsize:null,emo:"🍞",img:"Salt_Bread_Choco_Butter.png"},
     {name:"Salt Bread Sausage",normal:16000,disc:12000,upsize:null,emo:"🌭",img:"Salt_Bread_Sausage.png"},
     // ── MENU BARU ──
-    {name:"Bananachoco Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Bananachoco Soft Baked Cookie.png",isNew:true},
-    {name:"Oatmeal Raisin Soft Baked Cookie",normal:20000,disc:15000,upsize:null,emo:"🍪",img:"Oatmeal Raisin Soft Baked Cookie.png",isNew:true},
-    {name:"Sweet Honey Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Sweet Honey Soft Baked Cookie.png",isNew:true},
     {name:"Triple Cheese Bagel",normal:21000,disc:15000,upsize:null,emo:"🥯",img:"Triple Cheese Bagel.webp",isNew:true},
     {name:"Beef & Cheese Jalapeño Bagel",normal:23000,disc:16000,upsize:null,emo:"🥯",img:"Beef & Cheese Jalapeno Bagel.webp",isNew:true},
     {name:"Double Choco Bagel",normal:21000,disc:15000,upsize:null,emo:"🥯",img:"Double Choco Bagel.webp",isNew:true},
+    {name:"Bananachoco Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Bananachoco Soft Baked Cookie.png",isNew:true},
+    {name:"Oatmeal Raisin Soft Baked Cookie",normal:20000,disc:15000,upsize:null,emo:"🍪",img:"Oatmeal Raisin Soft Baked Cookie.png",isNew:true},
+    {name:"Sweet Honey Soft Baked Cookie",normal:21000,disc:15000,upsize:null,emo:"🍪",img:"Sweet Honey Soft Baked Cookie.png",isNew:true},
   ],
 };
 
