@@ -2097,6 +2097,10 @@ function brandSendToWA(){
 //   3. SWIPE GESTURE — ganti brand (swipe kiri/kanan)
 // ═══════════════════════════════════════════════════════
 (function initBrandSwipe(){
+  // Swipe kiri/kanan untuk ganti brand (Tomoro / Fore) DIMATIKAN karena sering kepencet.
+  // Ganti ke true kalau mau dinyalakan lagi. Pindah brand tetap lewat tombol brand.
+  const ENABLE_BRAND_SWIPE = false;
+  if(!ENABLE_BRAND_SWIPE) return;
   let touchStartX = 0;
   let touchStartY = 0;
   let touchStartTime = 0;
